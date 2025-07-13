@@ -9,10 +9,10 @@
 *** Settings ***
 Library    RequestsLibrary
 
-
 *** Variables ***
-${user}    rob21
+${user}    rob19
 ${password}    Rob123!!!
+${isbn}    7549173001
 ${content-type}    application/json
 
 *** Test Cases ***
@@ -29,9 +29,9 @@ Post user
     Should Be Equal    ${response_body}[username]    ${user}
 
     # salva o user id para auth
-    ${user_id}    Set Variable    ${response_body}[userID]
+    Set Global Variable    ${user_id}    ${response_body}[userID]
     Log To Console    ${user_id}
-
+    
 Create user token
     #header opcional?
     ${headers}    Create Dictionary    Content-Type=${content-type}    Accept=${content-type}
